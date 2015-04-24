@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>弹出层</title>
+	<link rel="stylesheet" type="text/css" href="css/jquery.dialogbox.css">
+</head>
+<body style="background:#eee">
+	<input  type="button" value="点击弹出层" id="btnDialog" />
+	<div id="dialog"></div>
+
+	<script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
+	<script src="js/jquery.dialogBox.js"></script>
+	<script>
+		$(function(){
+			$('#btnDialog').click(function(){
+				$('#dialog').dialogBox({
+					autoHide: true,
+					hasClose: true,
+					effect: 'fade',
+					hasBtn: true,
+					type: 'correct',
+					title: '标题',
+					content: './test.html'
+				})
+			})
+		})
+	</script>
+</body>
+
+</html>

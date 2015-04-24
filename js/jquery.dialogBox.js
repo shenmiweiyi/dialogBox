@@ -12,7 +12,7 @@
 
  			width: null, //弹出层宽度
  			height: null,  //弹出层高度
- 			autoSize: true,  //是否自适应尺寸
+ 			autoSize: true,  //是否自适应尺寸,默认自适应
  			autoHide: false,  //是否自自动消失，配合time参数共用
  			time: 3000,  //自动消失时间，单位毫秒
  			zIndex: 99999,  //弹出层定位层级
@@ -227,23 +227,24 @@
  				$dialog = $('#dialog-box'),
  				$container = $('.dialog-box-container'),
  				$content = $('.dialog-box-content'),
+ 				$mask  = $('#dialog-box-mask'),
  				type = that.settings.type,
  				EFFECT = 'effect';
 
  			//弹出框外框样式
  			$dialog.css({
  				width: function(){
- 					if(that.settings.autoSize){
+ 					if(that.settings.width){
+ 						return that.settings.width + 'px';
+ 					}else{
  						return;
- 					}else if(that.settings.width){
-						return that.settings.width + 'px';
  					}
  				},
  				height: function(){
- 					if(that.settings.autoSize){
- 						return;
- 					}else if(that.settings.height){
+ 					if(that.settings.height){
  						return that.settings.height + 'px';
+ 					}else{
+ 						return;
  					}
  				},
  				'margin-top': function(){
@@ -265,38 +266,44 @@
  			//弹出框内层容器样式
  			$container.css({
  				width: function(){
- 					if(that.settings.autoSize){
- 						return;
- 					}else if(that.settings.width){
+ 					if(that.settings.width){
 						return that.settings.width + 'px';
+ 					}else{
+ 						return;
  					}
  				},
  				height: function(){
- 					if(that.settings.autoSize){
- 						return;
- 					}else if(that.settings.height){
+ 					if(that.settings.height){
  						return that.settings.height + 'px';
+ 					}else{
+ 						return;
  					}
- 				}
+ 				},
  			});
 
  			//弹出框内容样式
  			$content.css({
  				width: function(){
- 					if(that.settings.autoSize){
+ 					if(that.settings.width){
+ 						return that.settings.width - 40 + 'px';
+ 					}else{
  						return;
- 					}else if(that.settings.width){
-						return that.settings.width - 40 + 'px';
  					}
  				},
  				height: function(){
- 					if(that.settings.autoSize){
- 						return;
- 					}else if(that.settings.height){
+ 					if(that.settings.height){
  						return that.settings.height - 126 + 'px';
+ 					}else{
+ 						return;
  					}
  				}
  			});
+
+ 			//遮罩层样式
+ 			$mask.css({
+ 				height: $(document).height() + 'px'
+ 			});
+ 		
 
  			//判断弹出框类型
  			switch(that.settings.type){

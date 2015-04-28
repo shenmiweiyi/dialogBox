@@ -63,12 +63,12 @@
 
 
  			if(!title){
- 				dialogHTML[0] = '<section id="dialog-box"><div class="dialog-box-container"><div class="dialog-box-content"></div>';			
+ 				dialogHTML[0] = '<section class="dialog-box"><div class="dialog-box-container"><div class="dialog-box-content"></div>';			
  			}else{
  				if(!hasClose){
-					dialogHTML[0] = '<section id="dialog-box"><div class="dialog-box-container"><div class="dialog-box-title"><h3>'+ title + '</h3></div><div class="dialog-box-content"></div>';
+					dialogHTML[0] = '<section class="dialog-box"><div class="dialog-box-container"><div class="dialog-box-title"><h3>'+ title + '</h3></div><div class="dialog-box-content"></div>';
  				}else{					
- 					dialogHTML[0] = '<section id="dialog-box"><div class="dialog-box-container"><div class="dialog-box-title"><h3>'+ title + '</h3><span class="dialog-box-close">×</span></div><div class="dialog-box-content"></div>';
+ 					dialogHTML[0] = '<section class="dialog-box"><div class="dialog-box-container"><div class="dialog-box-title"><h3>'+ title + '</h3><span class="dialog-box-close">×</span></div><div class="dialog-box-content"></div>';
  				}
  			}
 
@@ -139,7 +139,7 @@
  					var $iframeBody = $(window.frames['dialog-box-iframe'].document.body),
  						iframeWidth = $iframeBody.outerWidth(),
  						iframeHeight = $iframeBody.outerHeight(),
- 						$dialogBox = $('#dialog-box'),
+ 						$dialogBox = $('.dialog-box'),
  						$content = $('.dialog-box-content'),
  						$container = $('.dialog-box-container');
 
@@ -194,10 +194,10 @@
 
  		//显示弹出框
  		show: function(){
- 			$('#dialog-box').css({display:'block'});
+ 			$('.dialog-box').css({display:'block'});
 
  			setTimeout(function(){
- 				$('#dialog-box').addClass('show');
+ 				$('.dialog-box').addClass('show');
  			},50)
 
  			$('#dialog-box-mask').show();
@@ -206,7 +206,7 @@
  		//隐藏弹出框
  		hide: function(element){
  			var $this = $(element),
- 				$dialogBox = $('#dialog-box'),
+ 				$dialogBox = $('.dialog-box'),
  				$iframe = $('#dialogBox-box-iframe');
 
  			$dialogBox.removeClass('show');
@@ -224,7 +224,7 @@
  		//设置弹出框样式
  		setStyle: function(){
  			var that = this,
- 				$dialog = $('#dialog-box'),
+ 				$dialog = $('.dialog-box'),
  				$container = $('.dialog-box-container'),
  				$content = $('.dialog-box-content'),
  				$mask  = $('#dialog-box-mask'),

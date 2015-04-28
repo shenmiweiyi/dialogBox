@@ -24,7 +24,7 @@
  			cancelValue: null,  //取消按钮文字内容
  			cancel: function(){},  //点击取消后回调函数，默认关闭弹出框
  			effect: '', //动画效果：fade(默认),newspaper,fall,scaled,flip-horizontal,flip-vertical,sign,
- 			type: '', //对话框类型：normal(普通对话框),correct(正确/操作成功对话框),error(错误/警告对话框)
+ 			type: 'normal', //对话框类型：normal(普通对话框),correct(正确/操作成功对话框),error(错误/警告对话框)
  			title: '',  //标题内容，如果不设置，则连同关闭按钮（不论设置显示与否）都不显示标题
  			content: ''  //正文内容，可以为纯字符串，html标签字符串，以及URL地址，当content为URL地址时，将内嵌目标页面的iframe。
 
@@ -136,18 +136,17 @@
  				.on('load',function(){
 
  					//动态自适应iframe高度;
- 					var $iframeBody = $(window.frames['dialog-box-iframe'].document.body),
- 						iframeWidth = $iframeBody.outerWidth(),
- 						iframeHeight = $iframeBody.outerHeight(),
+ 					var $iframe = $(window.frames['dialog-box-iframe'].document),
+ 						$iframeBody = $(window.frames['dialog-box-iframe'].document.body),
+ 						iframeWidth = $iframe.outerWidth() - 8,
+ 						iframeHeight = $iframe.outerHeight() - 16,
  						$dialogBox = $('.dialog-box'),
  						$content = $('.dialog-box-content'),
  						$container = $('.dialog-box-container');
 
  						dialogBoxWidth = iframeWidth + 40;
  						dialogBoxHeight = iframeHeight + 126;
-
- 					console.log(iframeWidth);
-
+ 						
  					if(that.settings.autoSize){	
  						$(this).width(iframeWidth);
  						$(this).height(iframeHeight);
@@ -157,9 +156,26 @@
  							padding: '0'
  						});
 
+ 						$content.css({
+ 							width: iframeWidth + 'px',
+ 							height: iframeHeight + 'px'
+ 						});
+
+ 						$container.css({
+ 							width: dialogBoxWidth + 'px',
+ 							height: dialogBoxHeight + 'px'
+ 						});
+
  						$dialogBox.css({
  							width: dialogBoxWidth,
- 							height: dialogBoxHeight,
+ 							height: function(){
+ 								if(type === '' || type === 'normal'){
+ 									return dialogBoxHeight + 'px';
+ 								}else if(type === 'error' || type === 'correct'){
+ 									dialogBoxHeight = dialogBoxHeight + 8;
+ 									return dialogBoxHeight + 'px';
+ 								}	
+ 							},
  							'margin-top': function(){
  								if(type === '' || type === 'normal'){
  									return -Math.round(dialogBoxHeight/2) + 'px';
@@ -169,16 +185,6 @@
  								}	
  							},
  							'margin-left': -Math.round(dialogBoxWidth/2) + 'px'
- 						});
-
- 						$content.css({
- 							width: iframeWidth,
- 							height: iframeHeight
- 						});
-
- 						$container.css({
- 							width: dialogBoxWidth,
- 							height: dialogBoxHeight
  						});
 
  					}else{
@@ -242,7 +248,11 @@
  				},
  				height: function(){
  					if(that.settings.height){
- 						return that.settings.height + 'px';
+ 						if(type === '' || type === 'normal'){
+ 							return that.settings.height + 'px';
+ 						}else if(type === 'error' || type === 'correct'){
+ 							return that.settings.height + 4 + 'px';
+ 						}
  					}else{
  						return;
  					}
@@ -250,9 +260,9 @@
  				'margin-top': function(){
  					var height;
  					if(type === '' || type === 'normal'){
- 						height = $(this).height();
+ 						height = that.settings.height;
  					}else if(type === 'error' || type === 'correct'){
- 						height = $(this).height() + 4;
+ 						height = that.settings.height + 4;
  					}
  					return -Math.round(height/2) + 'px';
  				},

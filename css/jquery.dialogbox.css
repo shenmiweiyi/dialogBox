@@ -1,6 +1,6 @@
 
 .dialog-box{
-	font: normal 12px '\5FAE\8F6F\96C5\9ED1';
+	font: normal 14px '\5FAE\8F6F\96C5\9ED1';
 	height: auto;
 	position: fixed;
 	top: 50%;
@@ -42,7 +42,7 @@
 	float: left;
 }
 .dialog-box-close{
-	font-size: 24px;
+	font-size: 26px;
 	margin-left: 20px;
 	font-weight: normal;
 	float: right;
@@ -60,14 +60,14 @@
 	margin: 0;
 }
 .dialog-btn{
-	height:30px;
+	height:34px;
 	padding: 0 20px 20px;
 	text-align: center;
 }
 .dialog-btn span{
 	width: 90px;
-	height: 30px; 
-	line-height: 30px;
+	height: 34px; 
+	line-height: 34px;
 	text-align: center;
 	display: inline-block;
 	border-radius: 3px;

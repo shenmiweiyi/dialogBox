@@ -145,7 +145,7 @@
  						$container = $('.dialog-box-container');
 
  						dialogBoxWidth = iframeWidth + 40;
- 						dialogBoxHeight = iframeHeight + 126;
+ 						dialogBoxHeight = iframeHeight + 130;
  						
  					if(that.settings.autoSize){	
  						$(this).width(iframeWidth);
@@ -172,7 +172,7 @@
  								if(type === '' || type === 'normal'){
  									return dialogBoxHeight + 'px';
  								}else if(type === 'error' || type === 'correct'){
- 									dialogBoxHeight = dialogBoxHeight + 8;
+ 									dialogBoxHeight = dialogBoxHeight + 12;
  									return dialogBoxHeight + 'px';
  								}	
  							},
@@ -189,7 +189,7 @@
 
  					}else{
  						$(this).width(that.settings.width - 40);
- 						$(this).height(that.settings.height - 126);
+ 						$(this).height(that.settings.height - 130);
  					}
  				});
 				return $iframe;
@@ -302,7 +302,7 @@
  				},
  				height: function(){
  					if(that.settings.height){
- 						return that.settings.height - 126 + 'px';
+ 						return that.settings.height - 130 + 'px';
  					}else{
  						return;
  					}

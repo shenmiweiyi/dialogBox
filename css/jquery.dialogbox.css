@@ -31,6 +31,7 @@
 	box-shadow: 0 0 10px #bbb;
 }
 .dialog-box-title{
+	color: #333;
 	height: 36px;
 	line-height: 36px;
 	padding: 0 15px;

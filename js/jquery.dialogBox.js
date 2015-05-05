@@ -10,23 +10,23 @@
  	var pluginName = 'dialogBox',
  		defaults = {
 
- 			width: null, //弹出层宽度
- 			height: null,  //弹出层高度
- 			autoSize: true,  //是否自适应尺寸,默认自适应
- 			autoHide: false,  //是否自自动消失，配合time参数共用
- 			time: 3000,  //自动消失时间，单位毫秒
- 			zIndex: 99999,  //弹出层定位层级
- 			hasMask: false,  //是否显示遮罩层
- 			hasClose: false,  //是否显示关闭按钮
- 			hasBtn: false,  //是否显示操作按钮，如取消，确定
- 			confirmValue: null,  //确定按钮文字内容
- 			confirm: function(){}, //点击确定后回调函数
- 			cancelValue: null,  //取消按钮文字内容
- 			cancel: function(){},  //点击取消后回调函数，默认关闭弹出框
- 			effect: '', //动画效果：fade(默认),newspaper,fall,scaled,flip-horizontal,flip-vertical,sign,
- 			type: 'normal', //对话框类型：normal(普通对话框),correct(正确/操作成功对话框),error(错误/警告对话框)
- 			title: '',  //标题内容，如果不设置，则连同关闭按钮（不论设置显示与否）都不显示标题
- 			content: ''  //正文内容，可以为纯字符串，html标签字符串，以及URL地址，当content为URL地址时，将内嵌目标页面的iframe。
+ 			width: null, //number,弹出层宽度
+ 			height: null,  //number,弹出层高度
+ 			autoSize: true,  //boolean,是否自适应尺寸,默认自适应
+ 			autoHide: false,  //boolean,是否自自动消失，配合time参数共用
+ 			time: 3000,  //number,自动消失时间，单位毫秒
+ 			zIndex: 99999,  //number,弹出层定位层级
+ 			hasMask: false,  //boolean,是否显示遮罩层
+ 			hasClose: false,  //boolean,是否显示关闭按钮
+ 			hasBtn: false,  //boolean,是否显示操作按钮，如取消，确定
+ 			confirmValue: null,  //string,确定按钮文字内容
+ 			confirm: function(){}, //function,点击确定后回调函数
+ 			cancelValue: null,  //string,取消按钮文字内容
+ 			cancel: function(){},  //function,点击取消后回调函数，默认关闭弹出框
+ 			effect: '', //string,动画效果：fade(默认),newspaper,fall,scaled,flip-horizontal,flip-vertical,sign,
+ 			type: 'normal', //string,对话框类型：normal(普通对话框),correct(正确/操作成功对话框),error(错误/警告对话框)
+ 			title: '',  //string,标题内容，如果不设置，则连同关闭按钮（不论设置显示与否）都不显示标题
+ 			content: ''  //string,正文内容，可以为纯字符串，html标签字符串，以及URL地址，当content为URL地址时，将内嵌目标页面的iframe。
 
  		};
 

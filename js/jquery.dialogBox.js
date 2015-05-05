@@ -163,26 +163,40 @@
 
  						$container.css({
  							width: dialogBoxWidth + 'px',
- 							height: dialogBoxHeight + 'px'
+ 							height: function(){
+ 								if(that.settings.hasBtn){
+ 									return dialogBoxHeight + 'px';
+ 								}else{
+ 									return dialogBoxHeight - 54 + 'px';
+ 								}
+ 							}
  						});
 
  						$dialogBox.css({
  							width: dialogBoxWidth,
  							height: function(){
- 								if(type === '' || type === 'normal'){
- 									return dialogBoxHeight + 'px';
- 								}else if(type === 'error' || type === 'correct'){
- 									dialogBoxHeight = dialogBoxHeight + 12;
- 									return dialogBoxHeight + 'px';
+ 								if(that.settings.hasBtn){
+									if(type === '' || type === 'normal'){
+	 									return dialogBoxHeight + 'px';
+	 								}else if(type === 'error' || type === 'correct'){
+	 									dialogBoxHeight = dialogBoxHeight + 12;
+	 									return dialogBoxHeight + 'px';
+	 								}
+ 								}else{
+ 									return dialogBoxHeight - 54 + 'px';
  								}	
  							},
  							'margin-top': function(){
- 								if(type === '' || type === 'normal'){
- 									return -Math.round(dialogBoxHeight/2) + 'px';
- 								}else if(type === 'error' || type === 'correct'){
- 									dialogBoxHeight = dialogBoxHeight + 4;
- 									return -Math.round(dialogBoxHeight/2) + 'px';
- 								}	
+ 								if(that.settings.hasBtn){
+									if(type === '' || type === 'normal'){
+	 									return -Math.round(dialogBoxHeight/2) + 'px';
+	 								}else if(type === 'error' || type === 'correct'){
+	 									dialogBoxHeight = dialogBoxHeight + 4;
+	 									return -Math.round(dialogBoxHeight/2) + 'px';
+	 								}	
+ 								}else{
+ 									return -Math.round((dialogBoxHeight - 54)/2) + 'px';
+ 								}		
  							},
  							'margin-left': -Math.round(dialogBoxWidth/2) + 'px'
  						});
@@ -243,7 +257,9 @@
  					if(that.settings.width){
  						return that.settings.width + 'px';
  					}else{
- 						return;
+ 						if(that.settings.autoSize){
+ 							return $(this).width();
+ 						}
  					}
  				},
  				height: function(){
@@ -254,17 +270,28 @@
  							return that.settings.height + 4 + 'px';
  						}
  					}else{
- 						return;
+ 						if(that.settings.autoSize){
+ 							return $(this).height();
+ 						}
  					}
  				},
  				'margin-top': function(){
  					var height;
- 					if(type === '' || type === 'normal'){
- 						height = that.settings.height;
- 					}else if(type === 'error' || type === 'correct'){
- 						height = that.settings.height + 4;
- 					}
- 					return -Math.round(height/2) + 'px';
+
+					if(type === '' || type === 'normal'){
+						if(that.settings.autoSize){
+							height = $(this).height();
+						}else{
+							height = that.settings.height;
+						}
+					}else if(type === 'error' || type === 'correct'){
+						if(that.settings.autoSize){
+							height = $(this).height();
+						}else{
+							height = that.settings.height + 4;
+						}
+					}
+					return -Math.round(height/2) + 'px';
  				},
  				'margin-left': function(){
  					var width = $(this).width();

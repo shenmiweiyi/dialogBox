@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>demo-dialogBox</title>
-	<link rel="stylesheet" type="text/css" href="css/jquery.dialogbox.css">
+	<link rel="stylesheet" type="text/css" href="../css/jquery.dialogbox.css">
 	<style type="text/css">
 		*{ margin: 0; padding: 0; }
 		dl{ font:12px normal 'Microsoft YaHei'; width: 900px; height: 100%; overflow: hidden; margin: 20px auto;  border:1px solid #eee; background: #f8f8f8; padding: 20px; }
@@ -177,8 +177,29 @@
 			</pre>
 		</dd>
 	</dl>
+	<dl class="item">
+		<dt>10. load external page or url dialogBox</dt>
+		<dd>
+			<input type="button" id="btn-iframe" value="click me" />
+			<div id="iframe-dialogBox"></div>
+			<pre>
+				<code>
+				$('#btn-iframe').click(function(){
+					$('#iframe-dialogBox').dialogBox({
+						hasMask: true,
+						hasClose: true,
+						hasBtn: true,
+						effect: 'sign',
+						title: 'title text',
+						content: './page/test.html'
+					});
+				})
+				</code>
+			</pre>
+		</dd>
+	</dl>
 <script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
-<script src="js/jquery.dialogBox.js"></script>
+<script src="../js/jquery.dialogBox.js"></script>
 <script type="text/javascript">
 	$(function(){
 		//simple dialog
@@ -272,6 +293,16 @@
 			});
 		})
 
+		//load external page or url dialogBox
+		$('#btn-iframe').click(function(){
+			$('#iframe-dialogBox').dialogBox({
+				hasMask: true,
+				hasClose: true,
+				effect: 'flip-vertical',
+				title: 'title text',
+				content: './page/test.html'
+			});
+		})
 
 	})
 </script>

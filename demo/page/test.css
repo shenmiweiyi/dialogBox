@@ -1,0 +1,11 @@
+
+#test{
+	font: normal 14px 'Microsoft YaHei';
+	width: 500px;
+	height: 100%;
+	line-height: 24px;
+	overflow: hidden;
+}
+#test p{
+	text-indent: 2em;
+}

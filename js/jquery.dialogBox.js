@@ -179,23 +179,23 @@
 									if(type === '' || type === 'normal'){
 	 									return dialogBoxHeight + 'px';
 	 								}else if(type === 'error' || type === 'correct'){
-	 									dialogBoxHeight = dialogBoxHeight + 12;
+	 									dialogBoxHeight = dialogBoxHeight + 4;
 	 									return dialogBoxHeight + 'px';
 	 								}
  								}else{
- 									return dialogBoxHeight - 54 + 'px';
- 								}	
+ 									return dialogBoxHeight - 50 + 'px';
+ 								}
  							},
  							'margin-top': function(){
  								if(that.settings.hasBtn){
 									if(type === '' || type === 'normal'){
 	 									return -Math.round(dialogBoxHeight/2) + 'px';
 	 								}else if(type === 'error' || type === 'correct'){
-	 									dialogBoxHeight = dialogBoxHeight + 4;
+	 									dialogBoxHeight = dialogBoxHeight;
 	 									return -Math.round(dialogBoxHeight/2) + 'px';
 	 								}	
  								}else{
- 									return -Math.round((dialogBoxHeight - 54)/2) + 'px';
+ 									return -Math.round((dialogBoxHeight - 50)/2) + 'px';
  								}		
  							},
  							'margin-left': -Math.round(dialogBoxWidth/2) + 'px'

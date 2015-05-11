@@ -49,10 +49,24 @@
  			that.trigger(element);
  		},
 
+ 		//获取元素id值
+        getIdValue: function(element){
+            var $this = $(element),
+                selectID = $this.attr('id');
+                
+            if(typeof(selectID) !== 'undefined'){
+                return selectID;
+            }else{
+                selectID='';
+                return selectID;
+            }
+        },
+
  		//创建弹出框
  		create: function(element){
  			var that = this,
  				$this = $(element),
+ 				id = that.getIdValue(element),
  				title =  that.settings.title,
  				hasBtn = that.settings.hasBtn,
  				hasMask = that.settings.hasMask,
@@ -61,14 +75,13 @@
  				cancelValue = that.settings.cancelValue,
  				dialogHTML = [];
 
-
  			if(!title){
- 				dialogHTML[0] = '<section class="dialog-box"><div class="dialog-box-container"><div class="dialog-box-content"></div>';			
+ 				dialogHTML[0] = '<section id="' + id + '" class="dialog-box"><div class="dialog-box-container"><div class="dialog-box-content"></div>';			
  			}else{
  				if(!hasClose){
-					dialogHTML[0] = '<section class="dialog-box"><div class="dialog-box-container"><div class="dialog-box-title"><h3>'+ title + '</h3></div><div class="dialog-box-content"></div>';
+					dialogHTML[0] = '<section id="' + id + '" class="dialog-box"><div class="dialog-box-container"><div class="dialog-box-title"><h3>'+ title + '</h3></div><div class="dialog-box-content"></div>';
  				}else{					
- 					dialogHTML[0] = '<section class="dialog-box"><div class="dialog-box-container"><div class="dialog-box-title"><h3>'+ title + '</h3><span class="dialog-box-close">×</span></div><div class="dialog-box-content"></div>';
+ 					dialogHTML[0] = '<section id="' + id + '" class="dialog-box"><div class="dialog-box-container"><div class="dialog-box-title"><h3>'+ title + '</h3><span class="dialog-box-close">×</span></div><div class="dialog-box-content"></div>';
  				}
  			}
 

@@ -1,8 +1,9 @@
 /*!
- * dialogBox v0.0.1
+ * dialogBox v0.0.2
  * by Liuyuchao
  * Copyright 2015.3
  * Date: Wed Mar 25 2015
+  
  */
 
  ;(function($,window,document){
@@ -137,6 +138,7 @@
  				random = '?tmp=' + Math.random(),
  				urlReg = /^(https?:\/\/|\/|\.\/|\.\.\/)/;
 
+ 			//是外部页面时
  			if(urlReg.test(content)){
 
  				$iframe.attr({
@@ -220,6 +222,13 @@
  					}
  				});
 				return $iframe;
+
+			//是jQuery对象时
+ 			}else if(content instanceof jQuery){
+ 				return content.html();
+ 			//是DOM对象时
+ 			}else if(content instanceof HTMLElement){
+ 				return content.innerHTML;
  			}else{
  				return content;
  			}

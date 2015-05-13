@@ -27,7 +27,7 @@
  			effect: '', //string,动画效果：fade(默认),newspaper,fall,scaled,flip-horizontal,flip-vertical,sign,
  			type: 'normal', //string,对话框类型：normal(普通对话框),correct(正确/操作成功对话框),error(错误/警告对话框)
  			title: '',  //string,标题内容，如果不设置，则连同关闭按钮（不论设置显示与否）都不显示标题
- 			content: ''  //string,正文内容，可以为纯字符串，html标签字符串，以及URL地址，当content为URL地址时，将内嵌目标页面的iframe。
+ 			content: ''  //string,DOM object,jQuery Object,正文内容，可以为DOM对象，jQuery对象，纯字符串，html标签字符串，以及URL地址，当content为URL地址时，将内嵌目标页面的iframe。
 
  		};
 

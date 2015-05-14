@@ -144,6 +144,8 @@
 
  				$iframe.attr({
  					src: content + random,
+ 					marginheight: '0',
+ 					marginwidth: '0',
  					frameborder: 'no',
  					scrolling: 'no',
  					name: 'dialog-box-iframe',
@@ -228,7 +230,7 @@
  			}else if(content instanceof jQuery){
  				return content.clone(true,true);
  			//是DOM对象时
- 			}else if(content instanceof HTMLElement){
+ 			}else if(content instanceof HTMLElement){				
  				return content.innerHTML;
  			}else{
  				return content;

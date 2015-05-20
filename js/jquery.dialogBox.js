@@ -230,7 +230,7 @@
  			}else if(content instanceof jQuery){
  				return content.clone(true,true);
  			//是DOM对象时
- 			}else if(content instanceof HTMLElement){				
+ 			}else if(content.nodeType === 1 && content.nodeName === 'string'){				
  				return content.innerHTML;
  			}else{
  				return content;

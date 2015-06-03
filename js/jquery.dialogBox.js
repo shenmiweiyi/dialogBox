@@ -411,9 +411,14 @@
  		trigger: function(element,event){
  			var that = this,
  				$this = $(element);
+ 			
+ 			if($.isFunction(that.settings.callback)){
+ 				that.settings.callback();
+ 			}
 
- 			$('.dialog-box-close,#dialog-box-mask,.dialog-btn-cancel,.dialog-btn-confirm').on('click',function(){
+ 			$('.dialog-box-close,#dialog-box-mask,.dialog-btn-cancel,.dialog-btn-confirm').on('click',function(event){
  				that.hide($this);
+ 				event.stopPropagation();
  			});
 
  			$(document).keyup(function(event){
@@ -438,10 +443,6 @@
  				$('.dialog-btn-cancel').on('click',function(){
  					that.settings.cancel();
  				})
- 			}
-
- 			if($.isFunction(that.settings.callback)){
- 				that.settings.callback();
  			}
 
  		}

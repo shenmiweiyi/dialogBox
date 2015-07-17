@@ -29,7 +29,8 @@
  			title: '',  //string,标题内容，如果不设置，则连同关闭按钮（不论设置显示与否）都不显示标题
  			content: '',  //string,DOM object,jQuery Object,正文内容，可以为DOM对象，jQuery对象，纯字符串，html标签字符串，以及URL地址，当content为URL地址时，将内嵌目标页面的iframe。
  			callback: function(){}   //function,回调函数
-
+ 			close: function(){}  //function,关闭回调函数
+ 
  		};
 
  	function DialogBox(element,options){
@@ -415,6 +416,11 @@
  			if($.isFunction(that.settings.callback)){
  				that.settings.callback();
  			}
+
+ 			$('.dialog-box-close,#dialog-box-mask').on('click',function(event){
+				that.settings.close.call(that);
+				event.stopPropagation();
+			})
 
  			$('.dialog-box-close,#dialog-box-mask,.dialog-btn-cancel,.dialog-btn-confirm').on('click',function(event){
  				that.hide($this);

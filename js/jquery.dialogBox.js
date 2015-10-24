@@ -434,7 +434,8 @@
  			});
 
  			if(that.settings.autoHide){
- 				setTimeout(function(){
+ 				if (typeof dialogBoxTimeout !== 'undefined') {clearTimeout(dialogBoxTimeout);}
+ 				dialogBoxTimeout = setTimeout(function(){
  					that.hide($this);
  				},that.settings.time)
  			}
